@@ -15,6 +15,8 @@
 
 /*
 Changelog: 
+V0.03 : 
+- Começo da função de adicionar 
 V0.02 :
 - Add funcões do menu
 - Add texto do menu
@@ -76,19 +78,36 @@ void fnc_back ();
 class Employee {
 public:
 	string name;
-private:
 	string cpf;
-	string salary;
+	float salary;
 	string date;
+	
+	Employee(string n, string c, float s, string d);
+	void printall(Employee emp){
+		cout << "Nome: "<< name << "\n";
+		cout << "CPF: " << cpf << "\n";
+		cout << "Salário: R$" << salary << "\n";
+		cout << "Data: " << date << "\n";
+	}
 };
+
+Employee::Employee(string n, string c, float s, string d) {
+	name = n;
+	cpf = c;
+	salary = s;
+	date = d;
+
+}
+
 
 class Company {
 public:
 	string name;
-private:
 	string cnpj;
-	vector<Employee>employee;
+	vector<Employee> employee; // Vector of employees
 };
+
+
 
 
 
@@ -165,7 +184,10 @@ void fnc_add_company ()
 {}
 
 void fnc_add_employee ()
-{}
+{
+	Employee employee("joão", "45454", 999.99, "12/12/12");
+	employee.printall(employee);
+}
 
 void fnc_list_emp ()
 {}
