@@ -65,12 +65,12 @@ void fnc_clr();  // DBG : Desativar ela para melhorar o debug
 
 // SEP : Funções práticas
 // TODO : Ajustar tipos e parâmetros das funções.
-void fnc_add_company ();
-void fnc_add_employee ();
-void fnc_list_emp ();
-void fnc_list_exp_emp ();
-void fnc_calc_average ();
-void fnc_back ();
+void fnc_add_company();
+void fnc_add_employee();
+void fnc_list_emp();
+void fnc_list_exp_emp();
+void fnc_calc_average();
+void fnc_back();
 
 
 
@@ -83,8 +83,8 @@ public:
 	string date;
 	
 	Employee(string n, string c, float s, string d);
-	void printall(Employee emp){
-		cout << "Nome: "<< name << "\n";
+	void printall(){
+		cout << "\nNome: "<< name << "\n";
 		cout << "CPF: " << cpf << "\n";
 		cout << "Salário: R$" << salary << "\n";
 		cout << "Data: " << date << "\n";
@@ -104,10 +104,20 @@ class Company {
 public:
 	string name;
 	string cnpj;
+	//TEST : 
 	vector<Employee> employee; // Vector of employees
+
+	Company(string n, string c);
+	void printall(){
+		cout << "\nNome: " << name << "\n";
+		cout << "CNPJ: " << cnpj << "\n";
+	}
 };
 
-
+Company::Company(string n, string c){
+	name = n;
+	cnpj = c;
+}
 
 
 
@@ -185,8 +195,11 @@ void fnc_add_company ()
 
 void fnc_add_employee ()
 {
+	//TEST :
 	Employee employee("joão", "45454", 999.99, "12/12/12");
-	employee.printall(employee);
+	employee.printall();
+	Company company("IMC", "456686485");
+	company.printall();
 }
 
 void fnc_list_emp ()
@@ -199,6 +212,9 @@ void fnc_calc_average ()
 {}
 
 void fnc_back ()
+{}
+
+void fnc_raiseall ()
 {}
 
 
