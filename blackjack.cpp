@@ -10,12 +10,17 @@ using namespace std;
 
 class Jogador{
   public:
-    int pontos=0;
-    bool perdeu=false;
-    string nome="convidado";
-
+    int pontos;
+    bool perdeu;
+    string nome;
+  //função construtora
+  Jogador(string nome_p){
+    this->nome = nome_p;
+    this->pontos = 0;
+    this->perdeu=false;
+  }
   void add_pontos(int &pontos_ganhos){
-    this->pontos+=pontos_ganhos;
+    pontos+=pontos_ganhos;
     //21 apto a mudança. substituir por variável
     if (pontos>21){
       this->fora();
@@ -37,46 +42,33 @@ void jogar_dados(Jogador &jogador){
 };
 
 
-//list<int> first;
 int main() {
-  
-  vector<Jogador> jogadores;
-  int qnt_jogadores=4;
-  /*
-  //Pede a quantidade de jogadores e os nomes deles.
-  cout << "Quantos jogadores jogarão?";
+  srand (time(NULL)); //configuração do rand int
+  vector<Jogador> jogadores_ativos; //vector onde ficaram os jogadores
+  //Pede a quantidade de jogadores e os nomes deles. Enche a lista jogadores_ativos
+  int qnt_jogadores;
+  string input_aux;
+  cout << "Quantos jogadores jogarão? ";
   cin >> qnt_jogadores;
   for (int i=0;i<qnt_jogadores;i++){
     cout << "Qual é o nome do jogador " << i+1 << "? ";
-    string input_aux;
     cin >> input_aux;
-    jogadores.push_back(Jogador);
-    jogador1.nome = input_aux;
-  }*/
-  Jogador jogador1;
-  Jogador jogador2;
-  Jogador jogador3;
-  Jogador jogador4;
-  jogador1.nome = "nome1";
-  jogador2.nome = "nome2";
-  jogador3.nome = "nome3";
-  jogador4.nome = "nome4";
-  //jogador1.perdeu = true;
-  //lista com todos os jogadores que ainda estão jogando
-  vector<Jogador> jogadores_ativos= {jogador1,jogador2,jogador3,jogador4};
+    Jogador player_atual = Jogador(input_aux);
+    jogadores_ativos.push_back(player_atual);
+  }
 
 
-  bool acabou = false;
-  int contador=0;
+
+  bool acabou = false; //variável que marca o fim do jogo
   //inicio do turno
   while (acabou == false){  
     char aux_parada='k';
     //opção de cada jogador parar ou continuar
-    for (auto i = jogadores_ativos.begin(); i != jogadores_ativos.end(); ++i){//loop por toda a lista de jogadores
-      if (i->perdeu==false){ //se o jogador ainda n tiver parado, da a ele a oportunidade de jogar os dados, ou de parar
+    for (auto i = 0; i < qnt_jogadores; i++){//loop por toda a lista de jogadores
+      if (jogadores_ativos[i].perdeu==false){ //se o jogador ainda n tiver parado, da a ele a oportunidade de jogar os dados, ou de parar
       
         while (!(aux_parada=='S'||aux_parada=='s'||aux_parada=='n'||aux_parada=='N')){
-          cout << "É a sua vez, " << i->nome; 
+          cout << "É a sua vez, " << jogadores_ativos[i].nome; 
           cout << "\nQuer jogar os dados? S/N ";
           cin >> aux_parada;
           if(!(aux_parada=='S'||aux_parada=='s'||aux_parada=='n'||aux_parada=='N')){
@@ -85,27 +77,22 @@ int main() {
         }
         //se o jogador escolher parar, ele tá fora e n joga mais os dados
         if (aux_parada=='n'||aux_parada=='N'){ 
-          i->fora();
+          jogadores_ativos[i].fora();
         }
         //se o jogador tiver continuado, ele joga os dados
         else{
-          jogar_dados(*i);
+          jogar_dados(jogadores_ativos[i]);
         }
         aux_parada='k'; //resetando a escolha p/ o próximo
     }
-    else{
-      break;
-    }
     }
 
 
 
-
-    cout << "\n\n";
     //verifica se ainda tem algum jogador no jogo
     acabou = true;
-    for (auto i = jogadores_ativos.begin(); i != jogadores_ativos.end(); ++i){
-      if(i->perdeu==false){
+    for (auto i = 0; i < qnt_jogadores; i++){
+      if(jogadores_ativos[i].perdeu==false){
         acabou=false;
         break;
       }
@@ -113,16 +100,14 @@ int main() {
   }
   
   //exibe o vencedor
-  int vencedor_pts = jogadores_ativos[2].pontos;
-  string vencedor_nome = jogadores_ativos[2].nome;
-  for (auto i = jogadores_ativos.begin(); i != jogadores_ativos.end(); ++i){
-    if (i->pontos <= 21 && i->pontos > vencedor_pts){
-      vencedor_pts = i->pontos;
-      vencedor_nome = i->nome;
+  int vencedor = 0;
+  for (auto i = 0; i < qnt_jogadores; i++){
+    if (jogadores_ativos[i].pontos <= 21 && jogadores_ativos[i].pontos > jogadores_ativos[vencedor].pontos){
+      vencedor = i;
     }
   }
 
-  cout << "O grande vencedor é: " << vencedor_nome << ", com " << vencedor_pts << " pontos!";
+  cout << "O grande vencedor é: " << jogadores_ativos[vencedor].nome << ", com " << jogadores_ativos[vencedor].pontos << " pontos!";
 
   return 0;
 }
