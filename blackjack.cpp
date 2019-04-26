@@ -1,7 +1,3 @@
-/*Duvidas:
-Como usar uma quantidade indefinida de jogadores, e os colocar num vector/list
-*/
-
 #include <iostream>
 #include <string>
 #include <vector> 
