@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-void fnc_add_company(vector <Company> empresas,int qnt_empresas){
+void fnc_add_company(vector <Company> &empresas,int &qnt_empresas){
   string aux_nome;
   string aux_cnpj;
   cout << "Qual é o nome da impresa? ";

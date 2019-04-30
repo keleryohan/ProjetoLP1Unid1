@@ -11,8 +11,8 @@ void fnc_add_employee (vector <Company> empresas,int qnt_empresas){
   else{//mostra ao usuário todas as empresas disponíveis 
 	cout << "Lista de empresas:";
   int choice;
-  for(int i=0;i<=qnt_empresas;i++){
-    cout << "\n" << i << " - " << empresas[i].name;
+  for(int i=0;i<qnt_empresas;i++){
+    cout << "\n" << i+1 << " - " << empresas[i].name << "\n";
   }
   while(1){ //verifica se o usuário n escreveu caca
     cout << "Selecione a empresa: ";
@@ -24,6 +24,7 @@ void fnc_add_employee (vector <Company> empresas,int qnt_empresas){
       break;
     }
     }
+    choice--;
     string aux_nome;
     float aux_salario;
     //TO DO: outro while para deixar o usuário colocar quantos funcionários ele quiser
@@ -31,11 +32,27 @@ void fnc_add_employee (vector <Company> empresas,int qnt_empresas){
       cout << "Qual é o nome do funcionário? ";
       cin >> aux_nome;
       //verificar se n é repetido ^^^^ usar a string::compare
-      cout << "Qual será o salário do " << aux_nome << "?";
+      cout << "Qual será o salário do " << aux_nome << "? ";
       cin >> aux_salario;
       Employee empregado_atual = Employee(aux_nome,aux_salario,"data atual");
-      empresas[choice].employee.push_back(empregado_atual); //TO DO: trocar o data_atual por um jeito de se colocar a data de hoje, no tipo Data
+      empresas[choice].employee.push_back(empregado_atual);
+       //TO DO: trocar o data_atual por um jeito de se colocar a data de hoje, no tipo Data
+      //
+      //da a opção do usuário acrescentar vários funcionários  
+      int parada=0;    
+      while(1){
+        cout << "Deseja acrescentar outro funcionário? " << "\n1 - Sim\n" << "2 - Não\n"; 
+        cin >> parada;
+        if(parada!=1 && parada!=2){
+          cout << "Opção inválida! ";
+      }
+        else{
+          break;
+      }
+      }
+    if(parada==2){
+      break;
     }
-  
+    } 
   }
 }

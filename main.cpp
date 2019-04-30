@@ -81,47 +81,52 @@ int qnt_empresas = 0;
 
 int main () {
 	fnc_clr();
-
-	cout << "Menu Inicial:\n\n\n"
-	<<"Opções:\n\n"
-	<<"1-) Adicionar empresa\n"
-	<<"2-) Adicionar funcionários\n"
-	<<"3-) Listar dados dos funcionários\n"
-	<<"4-) Listar dados dos funcionários em período de experiência\n"
-	<<"5-) Calcular média do salário dos funcionários\n";
-
-	int choice = 0;
-	cout << "\n->";
-	cin >> choice;
-	fnc_clr();
-
-	if (choice == 1) {
-		cout << "\nOpção 1 selecionada:\n\n";
-		fnc_add_company(empresas,qnt_empresas);
-	}
-	else if (choice == 2) {
-		cout << "\nOpção 2 selecionada:\n\n";
-		fnc_add_employee(empresas,qnt_empresas);
-	}
-	else if (choice == 3) {
-		cout << "\nOpção 3 selecionada:\n\n";
-		fnc_list_emp();
-	}
-	else if (choice == 4) {
-		cout << "\nOpção 4 selecionada:\n\n";
-		fnc_list_exp_emp();
-	}
-	else if (choice == 5) {
-		cout << "\nOpção 5 selecionada:\n\n";
-		fnc_calc_average();
-	}
-	else {
-		cout << "\nERROR\n\nOpção inválida selecionada!\n\n";
-		fnc_back();
-	}
+  int choice = 0;
+  while(choice!=6){ 
+    cout << "Menu Inicial:\n\n\n"
+    <<"Opções:\n\n"
+    <<"1-) Adicionar empresa\n"
+    <<"2-) Adicionar funcionários\n"
+    <<"3-) Listar dados dos funcionários de uma empresa\n"
+    <<"4-) Listar dados dos funcionários em período de experiência\n"
+    <<"5-) Calcular média do salário dos funcionários\n"
+    <<"6-) Encerrar\n";
 
 
+    cout << "\n->";
+    cin >> choice;
+    fnc_clr();
 
+    if (choice == 1) {
+      cout << "\nOpção 1 selecionada:\n\n";
+      fnc_add_company(empresas,qnt_empresas);
+    }
+    else if (choice == 2) {
+      cout << "\nOpção 2 selecionada:\n\n";
+      fnc_add_employee(empresas,qnt_empresas);
+    }
+    else if (choice == 3) {
+      cout << "\nOpção 3 selecionada:\n\n";
+      fnc_list_emp();
+    }
+    else if (choice == 4) {
+      cout << "\nOpção 4 selecionada:\n\n";
+      fnc_list_exp_emp();
+    }
+    else if (choice == 5) {
+      cout << "\nOpção 5 selecionada:\n\n";
+      fnc_calc_average();
+    }
+    else if(choice == 6){
+      cout << "Encerrando...";
+    }
+    else {
+      cout << "\nERROR\n\nOpção inválida selecionada!\n\n";
+      fnc_back();
+	}
+
+
+  }
 	return 0;
 }
 
