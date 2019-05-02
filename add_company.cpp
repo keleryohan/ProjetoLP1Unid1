@@ -7,9 +7,9 @@ using namespace std;
 void fnc_add_company(vector <Company> &empresas,int &qnt_empresas){
   string aux_nome;
   string aux_cnpj;
-  cout << "Qual é o nome da impresa? ";
+  cout << "Qual é o nome da empresa? ";
   cin >> aux_nome;
-  cout << "Qual é o cnpj da impresa? ";
+  cout << "Qual é o cnpj da empresa? ";
   cin >> aux_cnpj;
   Company empresa = Company(aux_nome,aux_cnpj); 
   empresas.push_back(empresa);

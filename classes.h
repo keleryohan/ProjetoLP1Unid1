@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <ostream>
 #include <vector>
 using namespace std;
 #ifndef Employee_h
@@ -14,7 +15,8 @@ public:
 	float salary;
 	string date;
 	
-	//void printall();
+	void printall();
+  friend std::ostream& operator<< (std::ostream &o, Employee const e);
   Employee(string n, float s, string d);
 };
 #endif
@@ -28,6 +30,5 @@ public:
 	vector<Employee> employee; // Vector of employees
 
 	Company(string n, string c);
-	//void printall();
 };
 #endif

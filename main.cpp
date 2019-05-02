@@ -52,6 +52,7 @@ V0.01 :
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ostream>
 #include "classes.h"
 #include "funcions.h"
 
@@ -75,14 +76,22 @@ void fnc_clr();  // DBG : Desativar ela para melhorar o debug
 // '-> func. aumentar todos salarios de empresa em x% ; 
 // '-> func. listar dados de funcionarios com menos de 90 dias da data atual ; 
 // '-> func. exibir/calcular media dos atributos dos funcionarios de uma empresa ; 
-// WARNING : testar se tem empresas antes de permitir adicionar funcionarios.
 vector <Company> empresas;
-int qnt_empresas = 0;
-
+int qnt_empresas = 1;
+//criando uma empresa para teste
 int main () {
+  Company google = Company("google","123643");
+  empresas.push_back(google);
+  vector <Employee> empregados;
+  Employee keler = Employee("Keler Yohan",1500,"01/05/2019");
+  Employee italo = Employee("Italo",1999,"9/10/2010");
+  empregados.push_back(keler);
+  empregados.push_back(italo);
+  empresas[0].employee = empregados;
+  cout << empresas[0].employee[0].salary;
 	fnc_clr();
   int choice = 0;
-  while(choice!=6){ 
+  while(choice!=7){ 
     cout << "Menu Inicial:\n\n\n"
     <<"Opções:\n\n"
     <<"1-) Adicionar empresa\n"
@@ -104,10 +113,11 @@ int main () {
     else if (choice == 2) {
       cout << "\nOpção 2 selecionada:\n\n";
       fnc_add_employee(empresas,qnt_empresas);
+      //TESTE
     }
     else if (choice == 3) {
       cout << "\nOpção 3 selecionada:\n\n";
-      fnc_list_emp();
+      fnc_list_emp(empresas,qnt_empresas);
     }
     else if (choice == 4) {
       cout << "\nOpção 4 selecionada:\n\n";
@@ -115,14 +125,17 @@ int main () {
     }
     else if (choice == 5) {
       cout << "\nOpção 5 selecionada:\n\n";
-      fnc_calc_average();
+      fnc_calc_average(empresas,qnt_empresas);
     }
-    else if(choice == 6){
+    else if (choice == 6) {
+      cout << "\nOpção 6 selecionada:\n\n";
+      fnc_raiseall(empresas,qnt_empresas);
+    }
+    else if(choice == 7){
       cout << "Encerrando...";
     }
     else {
       cout << "\nERROR\n\nOpção inválida selecionada!\n\n";
-      fnc_back();
 	}
 
 
@@ -138,28 +151,17 @@ int main () {
 // TODO : Melhorar essa função (?)
 void fnc_clr ()
 {
-	cout << string( 100, '\n' );
+  cout << "\n--------------------------------------------\n";
+	//cout << string( 20, '\n' );
+  //cout << "---------------------------------------\n";
 }
 
 // SEP : Funções práticas :
 // TODO : Ajustar tipos e parâmetros das funções.
 
-void fnc_list_emp ()
-{}
 
 void fnc_list_exp_emp ()
 {}
-
-void fnc_calc_average ()
-{}
-
-void fnc_back ()
-{}
-
-void fnc_raiseall ()
-{}
-
-
 
 
 

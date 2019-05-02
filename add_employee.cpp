@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-void fnc_add_employee (vector <Company> empresas,int qnt_empresas){
+void fnc_add_employee (vector <Company> &empresas,int &qnt_empresas){
   if (qnt_empresas==0){//se n houverem empresas
     cout << "Erro! Sem empresas para se adicionar empregados! ";
   }
