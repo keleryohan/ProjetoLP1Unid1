@@ -54,7 +54,7 @@ int main() {
   while (acabou == false){  
     char aux_parada='k';
     //opção de cada jogador parar ou continuar
-    for (auto i = 0; i < qnt_jogadores; i++){//loop por toda a lista de jogadores
+    for (int i = 0; i < qnt_jogadores; i++){//loop por toda a lista de jogadores
       if (jogadores_ativos[i].perdeu==false){ //se o jogador ainda n tiver parado, da a ele a oportunidade de jogar os dados, ou de parar
 
         while (!(aux_parada=='S'||aux_parada=='s'||aux_parada=='n'||aux_parada=='N')){
@@ -94,7 +94,7 @@ int main() {
     }
     acabou = true;
     //verifica se ainda tem algum jogador ativo
-    for (auto i = 0; i < qnt_jogadores; i++){
+    for (int i = 0; i < qnt_jogadores; i++){
       if(jogadores_ativos[i].perdeu==false){
         acabou = false;
         break;
@@ -109,7 +109,7 @@ int main() {
   //exibe o vencedor
   //criando uma nova lista com os jogadores que tiverem pontuação abaixo do objetivo
   vector<Jogador> possiveis_vencedores;
-  for (auto i = 0; i < qnt_jogadores; i++){
+  for (int i = 0; i < qnt_jogadores; i++){
     if (jogadores_ativos[i].pontos <= objetivo){
       possiveis_vencedores.push_back(jogadores_ativos[i]);
     }
@@ -120,7 +120,7 @@ int main() {
     cout << "Todos perderam! ";
   }
   else{ 
-  for(auto i = 0; i < possiveis_vencedores.size(); i++){
+  for(int i = 0; i < possiveis_vencedores.size(); i++){
     if(possiveis_vencedores[i].pontos > possiveis_vencedores[vencedor].pontos){
       vencedor=i;
     }
@@ -129,7 +129,7 @@ int main() {
 
   cout << "\n\nO grande vencedor é: " << possiveis_vencedores[vencedor].nome << ", com " << possiveis_vencedores[vencedor].pontos << " pontos!"
   << "\n\nPontuação individual: \n\n";
-  for (auto i=0; i<qnt_jogadores;i++){
+  for (int i=0; i<qnt_jogadores;i++){
     cout << jogadores_ativos[i].nome << " -- " << jogadores_ativos[i].pontos << " pontos\n";
   }
   }
@@ -146,7 +146,7 @@ int main() {
     finalizado=1;
   }
   else{//para um novo jogo, reseta todos os jogadores
-    for(auto i=0;i<qnt_jogadores;i++){
+    for(int i=0;i<qnt_jogadores;i++){
       jogadores_ativos[i].pontos=0;
       jogadores_ativos[i].perdeu=false;
     }

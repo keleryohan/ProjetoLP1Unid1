@@ -26,8 +26,8 @@ void Jogador::fora(){
 
 //chama a função que aumenta os pontos do jogador atual e printa quanto ele tirou
 void jogar_dados(Jogador &jogador,int N){
-  auto x = rand() % 6 + 1;
-  auto y = rand() % 6 + 1;
+  int x = rand() % 6 + 1;
+  int y = rand() % 6 + 1;
   cout << "O jogador " << jogador.nome << " tirou " << x << " e " << y<< "!";
   int soma = x+y;
   jogador.add_pontos(soma,N);
